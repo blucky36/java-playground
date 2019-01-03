@@ -28,5 +28,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'play.App'
+        )
+    }
+}
 // Define the main class for the application
 mainClassName = 'play.App'
